@@ -1,1 +1,111 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: linear-gradient(to bottom, #000, #111);
+  color: white;
+}
 
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background: rgba(0,0,0,0.8);
+}
+
+.navbar h1 {
+  color: gold;
+}
+
+/* Hero */
+.hero {
+  height: 90vh;
+  background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') center/cover;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+}
+
+.hero-content {
+  position: relative;
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: 50px;
+  color: gold;
+}
+
+.search-box {
+  margin-top: 20px;
+}
+
+.search-box input {
+  padding: 10px;
+  width: 200px;
+}
+
+.search-box button {
+  padding: 10px;
+  background: gold;
+  border: none;
+}
+
+/* Properties */
+.properties {
+  display: flex;
+  gap: 20px;
+  padding: 40px;
+  justify-content: center;
+}
+
+.card {
+  background: #111;
+  padding: 15px;
+  border-radius: 15px;
+  width: 300px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px gold;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.card h3 {
+  color: gold;
+}
+
+.card button {
+  background: gold;
+  border: none;
+  padding: 10px;
+  width: 100%;
+}
+
+/* CTA */
+.cta {
+  text-align: center;
+  padding: 40px;
+}
+
+.cta a {
+  background: gold;
+  color: black;
+  padding: 15px 30px;
+  text-decoration: none;
+}
