@@ -1,93 +1,129 @@
-import { useState } from "react"; import { Button } from "@/components/ui/button"; import { Card, CardContent } from "@/components/ui/card"; import { Input } from "@/components/ui/input"; import { Search, Moon, Sun } from "lucide-react"; import { motion } from "framer-motion";
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Royal Estates</title>  <!-- Bootstrap -->  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">  <!-- Custom CSS -->  <style>
+    body {
+      background: linear-gradient(to bottom, #000, #111);
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+    }
 
-export default function HomePage() { const [darkMode, setDarkMode] = useState(true);
+    .navbar {
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(10px);
+    }
 
-return ( <div className={darkMode ? "bg-[#0a0a0a] text-white" : "bg-[#f8f8f8] text-black"}> {/* Navbar */} <nav className="flex justify-between items-center px-10 py-6 backdrop-blur-xl bg-white/5 sticky top-0 z-50 border-b border-white/10"> <h1 className="text-2xl font-semibold tracking-widest text-yellow-500">ROYAL ESTATES</h1> <div className="flex gap-4 items-center"> <Button variant="ghost">Login</Button> <Button onClick={() => setDarkMode(!darkMode)} className="rounded-full px-4" > {darkMode ? <Sun size={18} /> : <Moon size={18} />} </Button> </div> </nav>
+    .gold {
+      color: #d4af37;
+    }
 
-{/* Hero Section with Video Background */}
-  <section className="relative h-[90vh] flex items-center justify-center text-center overflow-hidden">
-    <video
-      autoPlay
-      loop
-      muted
-      className="absolute w-full h-full object-cover opacity-40"
-      src="https://cdn.coverr.co/videos/coverr-luxury-villa-1572/1080p.mp4"
-    />
+    .hero {
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
 
-    <div className="relative z-10 max-w-4xl px-6">
-      <motion.h2
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="text-6xl font-bold leading-tight mb-6"
-      >
-        Experience True Luxury Living
-      </motion.h2>
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+    }
 
-      <p className="text-lg text-gray-300 mb-10">
-        Discover handpicked ultra-luxury properties curated for elite investors.
-      </p>
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
 
-      {/* Glassmorphism Search */}
-      <div className="flex backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl overflow-hidden shadow-2xl">
-        <Input
-          placeholder="Search by city, price, or property type..."
-          className="flex-1 bg-transparent border-none text-white placeholder-gray-300"
-        />
-        <Button className="bg-yellow-500 text-black px-6">
-          <Search />
-        </Button>
-      </div>
-    </div>
-  </section>
+    .search-box {
+      background: rgba(0,0,0,0.6);
+      border: 1px solid #d4af37;
+      border-radius: 15px;
+      padding: 10px;
+    }
 
-  {/* Featured Properties */}
-  <section className="px-10 py-20 grid md:grid-cols-3 gap-10">
-    {[1, 2, 3].map((item) => (
-      <motion.div
-        key={item}
-        whileHover={{ scale: 1.03 }}
-        transition={{ duration: 0.3 }}
-      >
-        <Card className="rounded-3xl overflow-hidden bg-white/5 border border-white/10 backdrop-blur-xl">
-          <div className="relative">
-            <img
-              src={`https://source.unsplash.com/800x600/?luxury-villa,${item}`}
-              className="h-64 w-full object-cover"
-            />
-            <div className="absolute top-4 left-4 bg-black/60 px-3 py-1 rounded-full text-sm">
-              Featured
-            </div>
-          </div>
-          <CardContent className="p-6">
-            <h3 className="text-xl font-semibold mb-2">Ultra Luxury Villa #{item}</h3>
-            <p className="text-gray-400 mb-4">Dubai · 5 Beds · $5M</p>
-            <Button className="w-full bg-yellow-500 text-black rounded-xl">
-              View Details
-            </Button>
-          </CardContent>
-        </Card>
-      </motion.div>
-    ))}
-  </section>
+    .card {
+      background: #111;
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 20px;
+      transition: 0.3s;
+    }
 
-  {/* CTA Section */}
-  <section className="text-center py-24 bg-gradient-to-r from-yellow-500/10 to-transparent">
-    <h3 className="text-4xl mb-6 font-semibold">Invest in Prestige</h3>
-    <p className="text-gray-400 mb-8">
-      Connect directly for exclusive off-market deals.
-    </p>
-    <a href="tel:+989111480159">
-      <Button className="bg-yellow-500 text-black text-lg px-10 py-5 rounded-2xl shadow-xl">
-        Call Now
-      </Button>
-    </a>
-  </section>
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(212,175,55,0.3);
+    }
 
-  {/* Footer */}
-  <footer className="text-center p-8 border-t border-white/10 text-gray-500">
-    © 2026 Royal Estates. Designed for elite clients.
-  </footer>
+    .btn-gold {
+      background: #d4af37;
+      color: black;
+      border: none;
+    }
+
+    .btn-gold:hover {
+      background: #c19b2e;
+    }
+
+    footer {
+      border-top: 1px solid rgba(212,175,55,0.2);
+      color: gray;
+    }
+  </style></head><body><!-- Navbar --><nav class="navbar navbar-expand-lg navbar-dark px-4">
+  <a class="navbar-brand gold" href="#">ROYAL ESTATES</a>
+</nav><!-- Hero --><section class="hero">
+  <div class="hero-content">
+    <h1 class="display-3 gold">Luxury Redefined</h1>
+    <p class="lead">Exclusive villas & mansions</p><div class="search-box d-flex mt-4">
+  <input type="text" class="form-control" placeholder="Search property...">
+  <button class="btn btn-gold ms-2">Search</button>
 </div>
 
-); }
+  </div>
+</section><!-- Properties --><div class="container py-5">
+  <div class="row g-4"><div class="col-md-4">
+  <div class="card">
+    <img src="https://source.unsplash.com/800x600/?luxury-house" class="card-img-top">
+    <div class="card-body">
+      <h5 class="gold">Luxury Villa</h5>
+      <p>Dubai · 5 Beds · $5M</p>
+      <button class="btn btn-gold w-100">View</button>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-4">
+  <div class="card">
+    <img src="https://source.unsplash.com/800x600/?mansion" class="card-img-top">
+    <div class="card-body">
+      <h5 class="gold">Modern Mansion</h5>
+      <p>Dubai · 6 Beds · $8M</p>
+      <button class="btn btn-gold w-100">View</button>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-4">
+  <div class="card">
+    <img src="https://source.unsplash.com/800x600/?villa" class="card-img-top">
+    <div class="card-body">
+      <h5 class="gold">Private Estate</h5>
+      <p>Dubai · 7 Beds · $12M</p>
+      <button class="btn btn-gold w-100">View</button>
+    </div>
+  </div>
+</div>
+
+  </div>
+</div><!-- CTA --><div class="text-center py-5">
+  <h2 class="gold">Call For Exclusive Deals</h2>
+  <a href="tel:+989111480159" class="btn btn-gold btn-lg mt-3">Call Now</a>
+</div><!-- Footer --><footer class="text-center p-4">
+  © 2026 Royal Estates
+</footer><!-- Bootstrap JS --><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script></body>
+</html>
