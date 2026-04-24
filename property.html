@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>جزئیات ملک</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="loadPropertyPage()">
+
+<h1 id="title"></h1>
+
+<img id="mainImg" style="width:400px">
+
+<p id="desc"></p>
+
+<h3>ویدیو معرفی</h3>
+<video id="video" controls width="400"></video>
+
+<h3>فرم بازدید</h3>
+<input id="name" placeholder="نام">
+<input id="phone" placeholder="شماره">
+<button onclick="submitRequest()">ثبت درخواست</button>
+
+<h3>پیشنهادات</h3>
+<div id="suggestions"></div>
+
+<a href="tel:+989111480159">
+  <button>تماس مستقیم</button>
+</a>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
