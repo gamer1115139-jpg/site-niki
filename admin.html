@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin</title>
+</head>
+
+<body>
+
+<h2>درخواست‌ها</h2>
+<div id="list"></div>
+
+<script>
+const data = JSON.parse(localStorage.getItem("requests") || "[]");
+
+data.forEach(r => {
+  document.getElementById("list").innerHTML += `
+    <p>${r.name} - ${r.phone}</p>
+  `;
+});
+</script>
+
+</body>
+</html>
